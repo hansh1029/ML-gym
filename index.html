@@ -99,7 +99,7 @@
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);    
             // set status
-            if(prediction[0].probability.toFiexed(2) > 0.90) {
+            if(prediction[0].probability.toFixed(2) > 0.90) {
                 // add count
                 if(status == "squat") {
                     count++
@@ -113,9 +113,9 @@
                 $('.progress').css('stroke-dashoffset', progress);
                 $('#counter').html(count);
                 status = "stand";
-            } else if(prediction[1].probability.toFiexed(2) == 1.00) {
+            } else if(prediction[1].probability.toFixed(2) == 1.00) {
                 status = "squat"
-            } else if(prediction[2].probability.toFiexed(2) == 1.00) {
+            } else if(prediction[2].probability.toFixed(2) == 1.00) {
                 if(status == "squat" || status == "stand") {
                     // add wrong audio play
                 }
