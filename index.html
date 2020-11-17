@@ -53,14 +53,35 @@
             await predict();
             window.requestAnimationFrame(loop);
         }
-    
+        
+        // define variables
+        var status = "stand";
+        var count = 0;
+
         async function predict() {
             // Prediction #1: run input through posenet
             // estimatePose can take in an image, video or canvas html element
             const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
             // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
-    
+            
+            // set status
+            if(prediction[0].probability.toFiexed(2) > 0.90) {
+                // add count
+                if(status == "squat") {
+                    count++
+                    // add right audio play
+                }
+                status = "stand";
+            } else if(prediction[1].probability.toFiexed(2) == 1.00) {
+                status = "squat"
+            } else if(prediction[2].probability.toFiexed(2) == 1.00) {
+                if(status == "squat" || status == "stand") {
+                    // add wrong audio play
+                }
+                status = "bent"
+            }
+
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
