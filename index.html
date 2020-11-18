@@ -103,7 +103,8 @@
                 // add count
                 if(status == "squat") {
                     count++
-                    // add right audio play
+                    var audio = new Audio('hello_world.wav');
+                    audio.play();
                     progress = progress-32.656
                     if(progress <= 0) {
                         progress = 326.56-32.656
@@ -117,7 +118,8 @@
                 status = "squat"
             } else if(prediction[2].probability.toFixed(2) == 1.00) {
                 if(status == "squat" || status == "stand") {
-                    // add wrong audio play
+                    var audio = new Audio('hello_world.wav');
+                    audio.play();
                 }
                 status = "bent"
             }
