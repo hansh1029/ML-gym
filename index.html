@@ -88,7 +88,7 @@
             window.requestAnimationFrame(loop);
         }
         // define variables
-        var progress = 52*2*3.14; //init
+        var progress = 327; //init
         var status = "stand";
         var count = 0;
         const soundList = ["excellent", "good", "great", "yeah"];
@@ -107,16 +107,16 @@
                     var randomSound = soundList[Math.floor(Math.random() * soundList.length)];
                     var audio = new Audio('./audio/en/'+randomSound+'.mp3');
                     audio.play();
-                    progress = progress-32.656
+                    progress = progress-32.7
                     if(progress <= 0) {
-                        progress = 326.56-32.656
+                        progress = 327-32.7
                     }
                 }
                 //jquery
                 $('.progress').css('stroke-dashoffset', progress);
                 $('#counter').html(count);
                 status = "stand";
-            } else if(prediction[1].probability.toFixed(2) > 0.90) {
+            } else if(prediction[1].probability.toFixed(2) > 0.95) {
                 status = "squat"
             } else if(prediction[2].probability.toFixed(2) == 1.00) {
                 if(status == "squat" || status == "stand") {
