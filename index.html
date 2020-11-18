@@ -105,7 +105,7 @@
                 if(status == "squat") {
                     count++
                     var randomSound = soundList[Math.floor(Math.random() * soundList.length)];
-                    var audio = new Audio('./audio/en/'+randomSound+'.wav');
+                    var audio = new Audio('./audio/en/'+randomSound+'.mp3');
                     audio.play();
                     progress = progress-32.656
                     if(progress <= 0) {
