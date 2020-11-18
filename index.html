@@ -116,7 +116,7 @@
                 $('.progress').css('stroke-dashoffset', progress);
                 $('#counter').html(count);
                 status = "stand";
-            } else if(prediction[1].probability.toFixed(2) == 1.00) {
+            } else if(prediction[1].probability.toFixed(2) > 0.90) {
                 status = "squat"
             } else if(prediction[2].probability.toFixed(2) == 1.00) {
                 if(status == "squat" || status == "stand") {
